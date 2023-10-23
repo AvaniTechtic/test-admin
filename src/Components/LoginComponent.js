@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Button, Checkbox, Form, Input, Space } from 'antd';
-
-const onFinish = (values) => {
-  console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log('Failed:', errorInfo);
-};
+import React from 'react';
+import { Card, Button, Form, Input, Space, Tooltip } from 'antd';
+import { showNotification } from './NotificationComponent';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('')
-  const [password, setpassword] = useState('')
+  // submit the login form
+  const onFinish = (values) => {
+    // check email id and password are correct then logged in
+    if (values.email === 'avani@gmail.com' && values.password === 'Password') {
+      showNotification('', 'success', 'Successfully Logged In')
+    }
+    // check email id and password is exists or not
+    if (values.email !== 'avani@gmail.com' || values.password !== 'Password') {
+      showNotification('Please check your Email and password once!!', 'error', 'Email or password is incorrect!!')
+    }
+  };
 
-  useEffect(() => {
-
-  }, [])
+  // throws the error if any in form
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
 
   return (
     <div style={{
@@ -34,7 +39,7 @@ const LoginPage = () => {
               span: 16,
             }}
             style={{
-              maxWidth: 600,
+              minWidth: 350,
             }}
             initialValues={{
               remember: true,
@@ -44,14 +49,14 @@ const LoginPage = () => {
             autoComplete="off"
           >
             <Form.Item
-              label="Username"
-              name="username"
-              value={username}
+              label="Email"
+              name="email"
               rules={[
                 {
                   required: true,
-                  message: 'Please input your username!',
+                  message: 'Please input your Email!',
                 },
+                { type: "email", message: "Please enter a valid email address!" },
               ]}
             >
               <Input />
@@ -60,37 +65,39 @@ const LoginPage = () => {
             <Form.Item
               label="Password"
               name="password"
-              value={password}
               rules={[
                 {
                   required: true,
                   message: 'Please input your password!',
                 },
               ]}
+              style={{ marginBottom: '4px' }}
             >
               <Input.Password />
             </Form.Item>
 
-            <Form.Item
-              name="remember"
-              valuePropName="checked"
-              wrapperCol={{
-                offset: 8,
-                span: 16,
-              }}
-            >
-              <Checkbox>Remember me</Checkbox>
+            <Form.Item style={{ justifyContent: 'right', display: 'flex', marginBottom: '24px', whiteSpace: 'nowrap' }}>
+              <Tooltip>
+                <Link to="/forgot-password">Forgot Password?</Link>
+              </Tooltip>
             </Form.Item>
 
             <Form.Item
-              wrapperCol={{
-                offset: 8,
-                span: 16,
+              style={{
+                textAlign: 'center',
+                justifyContent: 'center',
+                display: 'flex',
               }}
             >
               <Button type="primary" htmlType="submit">
                 Submit
               </Button>
+            </Form.Item>
+
+            <Form.Item style={{ justifyContent: 'center', display: 'flex', marginBottom: '24px', whiteSpace: 'nowrap' }}>
+              <Tooltip>
+                Don't have an account? <Link to="/register">Create one</Link>
+              </Tooltip>
             </Form.Item>
           </Form>
         </Card>
