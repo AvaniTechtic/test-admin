@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Button, Form, Input, Space, Tooltip } from 'antd';
 import { showNotification } from './NotificationComponent';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
   // submit the login form
   const onFinish = (values) => {
+    setLoggedIn(true);
     // check email id and password are correct then logged in
-    if (values.email === 'avani@gmail.com' && values.password === 'Password') {
+    if (values.email === 'avani@gmail.com' && values.password === 'Password' && loggedIn) {
       showNotification('', 'success', 'Successfully Logged In')
+      navigate('/admin/dashboard'); // Redirect to the dashboard route
     }
     // check email id and password is exists or not
     if (values.email !== 'avani@gmail.com' || values.password !== 'Password') {
