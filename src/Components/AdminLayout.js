@@ -25,7 +25,7 @@ const AdminLayout = () => {
             <Link to="/admin/forgot-password">Upload Form</Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<CompassOutlined />}>
-            <Link to="/admin/forgot-password">Change Password</Link>
+            <Link to="/admin/change-password">Change Password</Link>
           </Menu.Item>
           <Menu.Item key="5" icon={<LogoutOutlined />}>
             <Link to="/">Logout</Link>
