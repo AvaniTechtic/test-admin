@@ -22,7 +22,7 @@ const AdminLayout = () => {
             <Link to="/admin/profile">Profile</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<FormOutlined />}>
-            <Link to="/admin/forgot-password">Upload Form</Link>
+            <Link to="/admin/form">Form</Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<CompassOutlined />}>
             <Link to="/admin/change-password">Change Password</Link>

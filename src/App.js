@@ -7,6 +7,7 @@ import ForgotPasswordPage from './Components/ForgotPasswordComponent';
 import Dashboard from './Components/DashboardComponent';
 import ProfilePage from './Components/ProfileComponent';
 import ChangePassPage from './Components/ChangePassword';
+import FormPage from './Components/UploadForm';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/admin/*" element={<AdminLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="form" element={<FormPage />} />
             <Route path="change-password" element={<ChangePassPage />} />
           </Route>
         </Routes>
