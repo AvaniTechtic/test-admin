@@ -19,16 +19,16 @@ const AdminLayout = () => {
             <Link to="/admin/dashboard">Dashboard</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<UserOutlined />}>
-            <Link to="/admin/login">Profile</Link>
+            <Link to="/admin/profile">Profile</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<FormOutlined />}>
             <Link to="/admin/forgot-password">Upload Form</Link>
           </Menu.Item>
-          <Menu.Item key="3" icon={<CompassOutlined />}>
+          <Menu.Item key="4" icon={<CompassOutlined />}>
             <Link to="/admin/forgot-password">Change Password</Link>
           </Menu.Item>
-          <Menu.Item key="3" icon={<LogoutOutlined />}>
-            <Link to="/admin/forgot-password">Logout</Link>
+          <Menu.Item key="5" icon={<LogoutOutlined />}>
+            <Link to="/">Logout</Link>
           </Menu.Item>
         </Menu>
       </Sider>
