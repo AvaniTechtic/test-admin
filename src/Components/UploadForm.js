@@ -3,9 +3,11 @@ import { showNotification } from './NotificationComponent';
 import moment from "moment";
 import React, { useState } from "react";
 import {
-    Card, Button, Form, Input, Space, DatePicker, Radio, Select, Upload, Modal,
+    Card, Button, Form, Space, Radio, Select, Upload, Modal,
 } from "antd";
-const { TextArea } = Input;
+import CommonInput from './common components/CommonInput';
+import DateInput from './common components/CommonDateInput';
+import CommonTextAreaInput from './common components/CommonTextAreaInput';
 const { Option } = Select;
 const dateFormat = "YYYY/MM/DD";
 
@@ -115,20 +117,20 @@ const FormPage = () => {
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
                     >
-                        <Form.Item
+
+                        <CommonInput
                             label="Username"
                             name="username"
+                            placeholder="Enter your Username"
                             rules={[
                                 {
                                     required: true,
                                     message: "Please input your Username!",
                                 },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
+                        <CommonTextAreaInput
                             label="Description"
                             name="desc"
                             rules={[
@@ -137,49 +139,38 @@ const FormPage = () => {
                                     message: "Please input your Description!",
                                 },
                             ]}
-                        >
-                            <TextArea rows={4} />
-                        </Form.Item>
+                            rows={4}
+                        />
 
-                        <Form.Item
-                            label="DOB"
+                        <DateInput
+                            label="Date of Birth"
                             name="Dob"
                             rules={[
                                 { validator: validateDateOfBirth },
-                            ]}
-                        >
-                            <DatePicker
-                                format={dateFormat}
-                                style={{ justifyContent: "left", display: "flex" }}
-                            />
-                        </Form.Item>
+                            ]} />
 
-                        <Form.Item
-                            name="phoneNumber"
-                            label="Phone Number"
+                        <CommonInput
+                            label="phoneNumber"
+                            name="Phone Number"
+                            placeholder="Enter your 10-digit phone number"
                             rules={[
                                 { required: true, message: 'Please enter your phone number.' },
                             ]}
-                        >
-                            <Input
-                                placeholder="Enter your 10-digit phone number"
-                                value={inputValue}
-                                onKeyPress={handleKeyPress} // Handle key presses to allow only numeric characters
-                                onInput={handleInput} // Handle input changes
-                                maxLength={10} // Set maximum length to 10 characters
-                            />
-                        </Form.Item>
+                            value={inputValue}
+                            onKeyPress={handleKeyPress} // Handle key presses to allow only numeric characters
+                            onInput={handleInput} // Handle input changes
+                            maxLength={10}
+                        />
 
-                        <Form.Item
+                        <CommonInput
                             label="Email"
                             name="email"
+                            placeholder="Enter your Email"
                             rules={[
                                 { required: true, message: "Please input your email!" },
                                 { type: "email", message: "Please enter a valid email address!" },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
                         <Form.Item label="Radio">
                             <Radio.Group>
@@ -188,7 +179,7 @@ const FormPage = () => {
                             </Radio.Group>
                         </Form.Item>
 
-                        <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
+                        <Form.Item name="gender" label="Gender" rules={[{ required: true, message: 'Gender is required' }]}>
                             <Select
                                 placeholder="Select a option and change input text above"
                                 // onChange={onGenderChange}

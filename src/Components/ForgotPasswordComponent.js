@@ -1,7 +1,8 @@
 import { showNotification } from './NotificationComponent';
 import React from 'react';
-import { Card, Button, Form, Input, Space, Tooltip } from 'antd';
+import { Card, Button, Form, Space, Tooltip } from 'antd';
 import { Link } from 'react-router-dom';
+import CommonInput from './common components/CommonInput';
 
 
 const ForgotPasswordPage = () => {
@@ -36,19 +37,15 @@ const ForgotPasswordPage = () => {
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
                     >
-                        <Form.Item
+                        <CommonInput
                             label="Email"
                             name="email"
+                            placeholder="Enter your Email"
                             rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your Email!',
-                                },
+                                { required: true, message: "Please input your email!" },
                                 { type: "email", message: "Please enter a valid email address!" },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
                         <Form.Item
                             style={{

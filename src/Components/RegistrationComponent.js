@@ -1,7 +1,10 @@
+import CommonInput from './common components/CommonInput';
+import DateInput from './common components/CommonDateInput';
+import CommonPasswordInput from './common components/CommonPasswordInput';
 import { showNotification } from './NotificationComponent';
 import moment from "moment";
 import React from "react";
-import { Card, Button, Form, Input, Space, DatePicker, Tooltip } from "antd";
+import { Card, Button, Form, Space, Tooltip } from "antd";
 import { Link } from 'react-router-dom';
 const dateFormat = "YYYY/MM/DD";
 
@@ -30,7 +33,7 @@ const RegistrationPage = () => {
                     reject('You must be at least 18 years old to register.');
                 }
             } else {
-                reject('Please select your date of birth');
+                reject('Date of birth is required');
             }
         });
     };
@@ -64,59 +67,51 @@ const RegistrationPage = () => {
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
                     >
-                        <Form.Item
+
+                        <CommonInput
                             label="First Name"
                             name="firstname"
+                            required="true"
+                            placeholder="Enter your First Name"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Please input your First Name!",
+                                    message: "Enter your First Name",
                                 },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
+                        <CommonInput
                             label="Last Name"
                             name="lastname"
+                            required="true"
+                            placeholder="Enter your Last Name"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Please input your Last Name!",
+                                    message: "Enter your Last Name",
                                 },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
+                        <CommonInput
                             label="Email"
                             name="email"
+                            placeholder="Enter your Email"
                             rules={[
                                 { required: true, message: "Please input your email!" },
                                 { type: "email", message: "Please enter a valid email address!" },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
-                            label="DOB"
-                            name="Dob"
-                            rules={[
-                                { validator: validateDateOfBirth },
-                            ]}
-                        >
-                            <DatePicker
-                                format={dateFormat}
-                                style={{ justifyContent: "left", display: "flex" }}
-                            />
-                        </Form.Item>
+                        <DateInput label="Date of Birth" name="Dob" rules={[
+                            { validator: validateDateOfBirth },
+                        ]} />
 
-                        <Form.Item
+                        <CommonPasswordInput
                             label="Password"
                             name="password"
+                            placeholder="Enter your Password"
                             rules={[
                                 { required: true, message: "Please input your password!" },
                                 {
@@ -124,13 +119,12 @@ const RegistrationPage = () => {
                                     message: `Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters`,
                                 },
                             ]}
-                        >
-                            <Input.Password />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
+                        <CommonPasswordInput
                             label="Confirm Password"
                             name="confPassword"
+                            placeholder="Enter your Confirm Password"
                             rules={[
                                 { required: true, message: "Please confirm your password!" },
                                 ({ getFieldValue }) => ({
@@ -144,9 +138,7 @@ const RegistrationPage = () => {
                                     },
                                 }),
                             ]}
-                        >
-                            <Input.Password />
-                        </Form.Item>
+                        />
 
                         <Form.Item
                             style={{

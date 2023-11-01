@@ -1,5 +1,7 @@
+import CommonInput from './common components/CommonInput';
+import CommonPasswordInput from './common components/CommonPasswordInput';
 import React, { useState } from 'react';
-import { Card, Button, Form, Input, Space, Tooltip } from 'antd';
+import { Card, Button, Form, Space, Tooltip } from 'antd';
 import { showNotification } from './NotificationComponent';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -52,33 +54,24 @@ const LoginPage = () => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
           >
-            <Form.Item
+            <CommonInput
               label="Email"
               name="email"
+              placeholder="Enter your Email"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your Email!',
-                },
+                { required: true, message: "Please input your email!" },
                 { type: "email", message: "Please enter a valid email address!" },
               ]}
-            >
-              <Input />
-            </Form.Item>
+            />
 
-            <Form.Item
+            <CommonPasswordInput
               label="Password"
               name="password"
+              placeholder="Enter your Password"
               rules={[
-                {
-                  required: true,
-                  message: 'Please input your password!',
-                },
+                { required: true, message: "Please input your password!" },
               ]}
-              style={{ marginBottom: '4px' }}
-            >
-              <Input.Password />
-            </Form.Item>
+            />
 
             <Form.Item style={{ justifyContent: 'right', display: 'flex', marginBottom: '24px', whiteSpace: 'nowrap' }}>
               <Tooltip>

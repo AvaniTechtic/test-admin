@@ -1,7 +1,9 @@
 import { showNotification } from './NotificationComponent';
+import CommonInput from './common components/CommonInput';
 import moment from "moment";
 import React from "react";
-import { Card, Button, Form, Input, Space, DatePicker } from "antd";
+import { Card, Button, Form, Space } from "antd";
+import DateInput from './common components/CommonDateInput';
 const dateFormat = "YYYY/MM/DD";
 
 const ProfilePage = () => {
@@ -84,7 +86,9 @@ const ProfilePage = () => {
                         autoComplete="off"
                         fields={fields}
                     >
-                        <Form.Item
+
+                        <CommonInput
+                            placeholder="Enter your First Name"
                             label="First Name"
                             name="firstname"
                             rules={[
@@ -93,46 +97,37 @@ const ProfilePage = () => {
                                     message: "Please input your First Name!",
                                 },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
+                        <CommonInput
                             label="Last Name"
                             name="lastname"
+                            required="true"
+                            placeholder="Enter your Last Name"
                             rules={[
                                 {
                                     required: true,
-                                    message: "Please input your Last Name!",
+                                    message: "Enter your Last Name",
                                 },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
+                        <CommonInput
                             label="Email"
                             name="email"
+                            placeholder="Enter your Email"
                             rules={[
                                 { required: true, message: "Please input your email!" },
                                 { type: "email", message: "Please enter a valid email address!" },
                             ]}
-                        >
-                            <Input />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
-                            label="DOB"
+                        <DateInput
+                            label="Date of Birth"
                             name="Dob"
                             rules={[
                                 { validator: validateDateOfBirth },
-                            ]}
-                        >
-                            <DatePicker
-                                format={dateFormat}
-                                style={{ justifyContent: "left", display: "flex" }}
-                            />
-                        </Form.Item>
+                            ]} />
 
                         <Form.Item
                             style={{

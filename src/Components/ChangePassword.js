@@ -1,6 +1,7 @@
 import { showNotification } from './NotificationComponent';
 import React from "react";
-import { Card, Button, Form, Input, Space } from "antd";
+import { Card, Button, Form, Space } from "antd";
+import CommonPasswordInput from './common components/CommonPasswordInput';
 
 const ChangePassPage = () => {
     // submit the form
@@ -42,9 +43,10 @@ const ChangePassPage = () => {
                         onFinishFailed={onFinishFailed}
                         autoComplete="off"
                     >
-                        <Form.Item
+                        <CommonPasswordInput
                             label="Password"
                             name="password"
+                            placeholder="Enter your Password"
                             rules={[
                                 { required: true, message: "Please input your password!" },
                                 {
@@ -52,13 +54,12 @@ const ChangePassPage = () => {
                                     message: `Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters`,
                                 },
                             ]}
-                        >
-                            <Input.Password />
-                        </Form.Item>
+                        />
 
-                        <Form.Item
+                        <CommonPasswordInput
                             label="Confirm Password"
                             name="confPassword"
+                            placeholder="Enter your Confirm Password"
                             rules={[
                                 { required: true, message: "Please confirm your password!" },
                                 ({ getFieldValue }) => ({
@@ -72,9 +73,7 @@ const ChangePassPage = () => {
                                     },
                                 }),
                             ]}
-                        >
-                            <Input.Password />
-                        </Form.Item>
+                        />
 
                         <Form.Item
                             style={{
