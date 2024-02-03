@@ -20,7 +20,7 @@ const BarChart = () => {
 
     return (
         <>
-            <h1>Bar Chart</h1>
+            <h1>Bar Chart 1235</h1>
             <Bar data={data} />
         </>
     );
